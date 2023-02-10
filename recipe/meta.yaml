@@ -6,25 +6,30 @@ package:
   version: {{ version }}
 
 source:
-  fn: {{ name }}-{{ version }}.tar.gz
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.tar.gz
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sexpdata-{{ version }}.tar.gz
   sha256: e576f62ead32d5041e630f9457d2c1a7544d7fe5dd96a49b55159239115c3773
 
 build:
-  number: 0
   noarch: python
-  script: {{ PYTHON }} -m pip install . --no-deps -vv
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
   host:
-    - python
+    - python >=3.6
+    - setuptools
     - pip
   run:
-    - python
+    - python >=3.6
+    - singledispatch
 
 test:
   imports:
     - sexpdata
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/tkf/sexpdata
