@@ -1,37 +1,40 @@
 {% set name = "sexpdata" %}
-{% set version = "0.0.3" %}
-{% set file_ext = "tar.gz" %}
-{% set hash_type = "sha256" %}
-{% set hash_value = "1ac827a616c5e87ebb60fd6686fb86f8a166938c645f4089d92de3ffbdd494e0" %}
+{% set version = "0.0.4" %}
 
 package:
-  name: '{{ name|lower }}'
-  version: '{{ version }}'
+  name: {{ name|lower }}
+  version: {{ version }}
 
 source:
-  fn: '{{ name }}-{{ version }}.{{ file_ext }}'
-  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/{{ name }}-{{ version }}.{{ file_ext }}
-  '{{ hash_type }}': '{{ hash_value }}'
+  url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sexpdata-{{ version }}.tar.gz
+  sha256: e576f62ead32d5041e630f9457d2c1a7544d7fe5dd96a49b55159239115c3773
 
 build:
-  number: 0
   noarch: python
-  script: python -m pip install --no-deps --ignore-installed .
+  script: {{ PYTHON }} -m pip install . -vv
+  number: 0
 
 requirements:
-  build:
-    - python
+  host:
+    - python >=3.6
+    - setuptools
     - pip
   run:
-    - python
+    - python >=3.6
+    - singledispatch
 
 test:
   imports:
     - sexpdata
+  commands:
+    - pip check
+  requires:
+    - pip
 
 about:
   home: https://github.com/tkf/sexpdata
   license: BSD-2-Clause
+  license_file: LICENSE
   license_family: BSD
   summary: S-expression parser for Python
   description: |
@@ -42,5 +45,5 @@ about:
   dev_url: https://github.com/tkf/sexpdata
 
 extra:
-    recipe-maintainers:
-        - egeogretmen
+  recipe-maintainers:
+    - egeogretmen
