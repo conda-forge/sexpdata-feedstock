@@ -1,5 +1,5 @@
 {% set name = "sexpdata" %}
-{% set version = "0.0.4" %}
+{% set version = "1.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://pypi.io/packages/source/{{ name[0] }}/{{ name }}/sexpdata-{{ version }}.tar.gz
-  sha256: e576f62ead32d5041e630f9457d2c1a7544d7fe5dd96a49b55159239115c3773
+  sha256: e8d5f75c378a07c6d1cc61fad9611b451c9383c0253052e16198a852e1620705
 
 build:
   noarch: python
