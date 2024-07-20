@@ -153,4 +153,5 @@ Feedstock Maintainers
 =====================
 
 * [@egeogretmen](https://github.com/egeogretmen/)
+* [@hmaarrfk](https://github.com/hmaarrfk/)
 
